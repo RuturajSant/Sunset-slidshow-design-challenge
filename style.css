@@ -1,0 +1,152 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+body,html{
+  height:100%;
+}
+body{
+  position:relative;
+  display:flex;
+  background:black;
+  flex:1 0 1;
+  color:#fff;
+  font-family:Montserrat,sans-serif;
+  overflow-x:hidden;
+}
+#logo,#menu,#profile,.num{
+  position:absolute;
+  z-index:2;
+  opacity:0.6;
+  transition:opacity 0.3s ease-in;
+}
+#logo{
+  top:3%;
+  left:3%;
+  opacity:1;
+}
+#menu{
+  right:3%;
+  top:calc(50% - 25px);
+}
+#menu:hover{
+  opacity:1;
+}
+#profile{
+  top:3%;
+  right:3%;
+}
+#profile:hover{
+  opacity:1;
+}
+.num{
+  right:3%;
+  bottom:3%;
+  opacity:0;
+}
+.card{
+  opacity:0;
+  position:absolute;
+  z-index:0;
+  min-width:100%;
+  height:100%;
+  transition:all 0.2s ease;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0 0 0 0;
+  background:#000;
+  opacity:0.25;
+}
+.card > .title{
+  position:absolute;
+  opacity:0;
+  max-width:80%;
+  top:max(15%,10vw);
+  left:clamp(20px,20%,12vw);
+  transition:all 0.2s ease-out;
+  
+}
+.card > .caption{
+  display:flex;
+  opacity:0;
+  justify-content:space-between;
+  align-items:center;
+  position:absolute;
+  max-width:min(60vw,660px);
+  bottom:0%;
+  left:0%;
+  height:6rem;
+  background:rgba(0, 11, 38,0.7);
+  transition:all 0.5s ease-in;
+}
+.caption > .buttons{
+  height:100%;
+}
+.caption > .buttons > button{
+  
+  height:100%;
+  color:#fff;
+  background:none;
+  width:3rem;
+  border:none;
+}
+.caption > .buttons > button:hover{
+  background:rgba(255 ,255 ,255 ,0.2);
+}
+.caption > p{
+  max-width:50%;
+  position:relative;
+  align-self:center;
+  left:clamp(20px,20%,12vw);
+}
+.caption::before{
+  content:"";
+  position:absolute;
+  height:100%;
+  width:1px;
+  left:8%;
+  bottom:30%;
+  background:#fff;
+}
+
+/* animations */
+.active{
+  z-index:1;
+  opacity:1;
+}
+.active > .title{
+  top:max(15%,20vw);
+  opacity:1;
+}
+.active > .caption{
+  opacity:1;
+}
+.active > .caption > .buttons > button{
+  
+}
+.active > .num{
+  opacity:1;
+}
+
+
+@media(max-width:520px){
+  .card > .caption{
+    flex-direction:column;
+    height:55%;
+  }
+  .caption > .buttons{
+    max-height:5rem;
+/*     margin-bottom:20%; */
+  }
+  .caption > .buttons > button{
+    bottom:0;
+    padding:2rem;
+  }
+  .card > .caption > p{
+    left:auto;
+    padding-block:1.6rem;
+  }
+}
